@@ -12,15 +12,18 @@ export const ControlledInput2: React.FC<IInputProps> = ({value, inputAction}) =>
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
         setInput(event.target.value);
+        inputAction(event.target.value);
     
     };
+
+    const len = input?.length;
 
     const id = useId();
     return(
         <div>
             <label htmlFor={`${id}-txt`}>Text</label>
             <input id={`${id}-txt`} value={value} onChange={handleChange}/>
-            <span>{value?.length}</span>
+            <span>{len}</span>
         </div>
     );
 };
